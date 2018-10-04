@@ -29,18 +29,12 @@ const initialTodoState = {
 }
 
 const todo = createReducer(initialTodoState, {
-  [_toggleTodo.type]: state => {
-    console.log('this is _toggleTodo', state);
-    return {
-      ...state, completed: !state.completed,
-    }
-  },
-  [_deleteTodo.type]: state => {
-
-    return {
-      ...state, deleted: !state.deleted,
-    }
-  },
+  [_toggleTodo.type]: state => ({
+    ...state, completed: !state.completed,
+  }),
+  [_deleteTodo.type]: state => ({
+    ...state, deleted: !state.deleted,
+  }),
   [saveTodo.type]: mergePayload,
   [_addTodo.type]: mergePayload,
 });
@@ -60,10 +54,7 @@ const ids = createReducer([], {
 });
 
 const filter = createReducer('all', {
-  [setFilter.type]: (_, { payload }) => {
-    console.log('this is filter', payload);
-    return payload;
-  },
+  [setFilter.type]: (_, { payload }) => (payload),
 });
 
 const todos = combineReducers({ byId, ids, filter });
@@ -79,17 +70,11 @@ const createSelector = (...selectors) => {
 }
 
 export const domain = domainSelector(
-  state => {
-    console.log('this is domain', state.todos);
-    return state.todos;
-  }
+  state => (state.todos)
 );
 
 export const getTodos = createSelector(
-  domain, ({ ids, byId }) => {
-    console.log('this getTodos')
-    return ids.map(id => byId[id]);
-  }
+  domain, ({ ids, byId }) => ids.map(id => byId[id])
 );
 
 export const getFilterValue = createSelector(

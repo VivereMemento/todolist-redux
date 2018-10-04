@@ -20,7 +20,7 @@ export const saveTodo = action('TODO::SAVE');
 export const setFilter = action('TODO::SET-FILTER');
 const _addTodo = action('TODO::ADD');
 export const addTodo = name => _addTodo(name);
-// toggleTodo(id)
+
 
 const initialTodoState = {
   id: null,
@@ -36,7 +36,7 @@ const todo = createReducer(initialTodoState, {
     }
   },
   [_deleteTodo.type]: state => {
-    
+
     return {
       ...state, deleted: !state.deleted,
     }

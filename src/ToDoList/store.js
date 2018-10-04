@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-// import { createSelector } from 'reselect';
 
 import { getFilterFunc, filterList, get } from './helpers';
 import {

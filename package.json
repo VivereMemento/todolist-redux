@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
+  "homepage": "https://viverememento.github.io/todolist-redux/.",
   "dependencies": {
     "react": "16.4.2",
     "react-dom": "16.4.2",
